@@ -1,6 +1,6 @@
 <?php
 
-class product_description extends Model
+class product_description_en extends Model
 {
 	/**
 	 * @author chenliujin <liujin.chen@qq.com>
@@ -8,7 +8,7 @@ class product_description extends Model
 	 */
 	static public function GetTableName()
 	{
-		return 'product_description';
+		return 'product_description_en';
 	}
 
 	public function getPrimaryKey()

@@ -122,7 +122,6 @@ input[type=submit] {
 }
 
 .footer {
-	height: 250px;
 	background-color: #131a22;
 }
 
@@ -137,6 +136,13 @@ input[type=submit] {
 .selected {
 	border:1px solid #e77600;
 	box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+
+.copyright {
+	padding: 30px 0 30px;
+	color: #999;
+	text-align: center;
+	font-size: 12px;
 }
 </style>
 </head>
@@ -189,12 +195,12 @@ input[type=submit] {
 	</div>
 	<div class="centerCol">
 		<h1>
-			<span id="productTitle" class="chenliujin-size-large">Candance 2 Laser 5 LED Cycling Bicycle Bike Flash Taillight</span>
+			<span id="productTitle" class="chenliujin-size-large"><?php echo $product->title; ?></span>
 		</h1>
 		<hr />
 		<div style="padding: 5px 0">
 			<label>Price:</label> 
-			<span class="chen-price">$12.00</span>
+			<span class="chen-price">$<?php echo $product->price; ?></span>
 		</div>
 		<div style="width:100%; padding: 5px 0">
 			<label>Qty:</label><select name="quantity">
@@ -227,6 +233,7 @@ input[type=submit] {
 </div>
 
 <footer class="footer">
+	<div class="copyright">© 2016, Zzrig.com, Inc.</div>
 </footer>
 
 <script>
