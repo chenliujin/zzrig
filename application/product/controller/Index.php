@@ -1,10 +1,12 @@
 <?php
 namespace app\product\controller;
 
-class Index
+use think\Controller;
+
+class Index extends Controller
 {
     public function index()
     {
-		echo 'info';
+		return $this->fetch();
     }
 }
