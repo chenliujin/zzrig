@@ -1,22 +1,23 @@
 <?php
 
-class product extends Model
+class shopping_cart extends Model
 {
 	/**
 	 * @author chenliujin <liujin.chen@qq.com>
-	 * @since 2016-08-22
+	 * @since 2016-08-23
 	 */
 	static public function GetTableName()
 	{
-		return 'product';
+		return 'shopping_cart';
 	}
 
 	/**
 	 * @author chenliujin <liujin.chen@qq.com>
-	 * @since 2016-08-22
+	 * @since 2016-08-23
 	 */
 	public function getPrimaryKey()
 	{
-		return ['product_id'];
+		return ['id'];
 	}
+
 }

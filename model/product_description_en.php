@@ -13,5 +13,8 @@ class product_description_en extends Model
 
 	public function getPrimaryKey()
 	{
+		return [
+			'product_id'
+		];
 	}
 }

@@ -1,0 +1,48 @@
+<style>
+a {
+	color: #0066c0;
+	text-decoration: none;
+}
+
+.product_title {
+	font-size: 17px!important;
+	font-weight: 700!important;
+	line-height: 1.255!important;
+	font-family: Arial,sans-serif;
+}
+
+</style>
+<div>
+	<div style="width:100%">
+		<div style="width: 10%; float: left">Image</div>
+		<div style="float: left">Title</div>
+		<div style="width: 10%; float: left">Price</div>
+		<div style="width: 10%; float: left">Quantity</div>
+	</div>
+
+	<?php foreach ($shopping_cart_list as $shopping_cart) { 
+
+		$product_description = new \product_description_en;
+		$product_description = $product_description->get($shopping_cart->product_id);
+	
+	?>
+	<div style="margin: 14px 0; width:100%; clear: both; border-bottom: 1px solid #DDD; height: 100px">
+		<!--
+		<div style="margin-left: 115px; width: 65%; float: left">
+			<div style="margin-left: -115px; float: left">
+				<img src="" width="100" />
+			</div>
+			<div style="">
+				<a href="#">
+					<span class="product_title">
+					<?php echo $product_description->title; ?>
+					</span>
+				</a>
+			</div>
+		<div>
+		<div style="width: 10%;">Price</div>
+		<div style="width: 10%;"><?php echo $shopping_cart->quantity; ?></div>
+		-->
+	</div>
+	<?php } ?>
+</div>

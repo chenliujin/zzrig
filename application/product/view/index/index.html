@@ -96,24 +96,8 @@ input[type=submit] {
 	color: #b12704!important;
 }
 
-.chen-button {
-	background:#e7e9ec;
-	border-radius:3px;
-	border-color:#adb1b8 #a2a6ac #8d9096;
-	border-style:solid;
-	border-width:1px;
-	cursor:pointer;
-	display:inline-block;
-	padding:0;
-	text-align:center;
-	text-decoration:none!important;
-	vertical-align:middle;
-}
 .button-selected {
 	border-color: rgb(231, 118, 0);
-}
-.chen-button-pri {
-	background: #f0c14b;
 }
 
 .header {
@@ -159,27 +143,32 @@ input[type=submit] {
 				 <ul style="margin-top: 4px">
 					<li class="thumbnail">
 						<span>
-							<img src="https://images-na.ssl-images-amazon.com/images/I/51zW-2OTNZL._SS40_.jpg" data-img="https://images-na.ssl-images-amazon.com/images/I/51zW-2OTNZL._SY450_.jpg" />
+							<img src="/images/II/2016/08/1/1_40.jpg" data-img="/images/II/2016/08/1/1_450.jpg" />
 						</span>
 					</li>
 					<li class="thumbnail">
 						<span>
-							<img src="https://images-na.ssl-images-amazon.com/images/I/41CtSJwCTIL._SS40_.jpg" data-img="https://images-na.ssl-images-amazon.com/images/I/41CtSJwCTIL._SY450_.jpg" />
+							<img src="/images/II/2016/08/1/2_40.jpg" data-img="/images/II/2016/08/1/2_450.jpg" />
 						</span>
 					</li>
 					<li class="thumbnail">
 						<span>
-							<img src="https://images-na.ssl-images-amazon.com/images/I/41XKu9NG%2BiL._SS40_.jpg" data-img="https://images-na.ssl-images-amazon.com/images/I/41XKu9NG%2BiL._SY450_.jpg" />
+							<img src="/images/II/2016/08/1/3_40.jpg" data-img="/images/II/2016/08/1/3_450.jpg" />
 						</span>
 					</li>
 					<li class="thumbnail">
 						<span>
-							<img src="https://images-na.ssl-images-amazon.com/images/I/41GRs7crS0L._SS40_.jpg" />
+							<img src="/images/II/2016/08/1/4_40.jpg" data-img="/images/II/2016/08/1/4_450.jpg" />
 						</span>
 					</li>
 					<li class="thumbnail">
 						<span>
-							<img src="https://images-na.ssl-images-amazon.com/images/I/512mHWp8bUL._SS40_.jpg" />
+							<img src="/images/II/2016/08/1/5_40.jpg" data-img="/images/II/2016/08/1/5_450.jpg" />
+						</span>
+					</li>
+					<li class="thumbnail">
+						<span>
+							<img src="/images/II/2016/08/1/6_40.jpg" data-img="/images/II/2016/08/1/6_450.jpg" />
 						</span>
 					</li>
 				</ul>
@@ -187,7 +176,7 @@ input[type=submit] {
 			<div style="float:left; padding-left: 1%;">
 				<ul>
 					<li class="item0">
-						<img id="zoomimg" src="https://images-na.ssl-images-amazon.com/images/I/41XKu9NG%2BiL._SY450_.jpg" style="max-width: 442px; max-height:442px;" />
+						<img id="zoomimg" src="/images/II/2016/08/1/1_450.jpg" style="max-width: 442px; max-height:442px;" />
 					</li>
 				</ul>
 			</div>
@@ -195,25 +184,36 @@ input[type=submit] {
 	</div>
 	<div class="centerCol">
 		<h1>
-			<span id="productTitle" class="chenliujin-size-large"><?php echo $product->title; ?></span>
+			<span id="productTitle" class="chenliujin-size-large"><?php echo $product_description->title; ?></span>
 		</h1>
 		<hr />
 		<div style="padding: 5px 0">
 			<label>Price:</label> 
 			<span class="chen-price">$<?php echo $product->price; ?></span>
 		</div>
+		<form action="/shopping_cart/add" method="POST">
+			<input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>" />
 		<div style="width:100%; padding: 5px 0">
 			<label>Qty:</label><select name="quantity">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
+				<?php
+				if ($product->quantity) {
+					$max = $product->quantity > 9 ? 9 : $product->quantity;
+					for ($i=1; $i<=$max; $i++) {
+						echo '<option value="' . $i . '">' . $i . '</option>';
+					} 
+				} else {
+					echo '<option value="0">0</option>';
+				}
+				?>
 			</select>
 		</div>
-		<span class="chen-button chen-button-pri">
+		<span>
 			<input type="submit" value="Add to Cart" />
 		</span>
+		<div>
+			Add to Wish List
+		</div>
+		</form>
 	</div>
 	<div style="padding: 4px 4px; clear: left;"></div>
 	<div style="clear: both">
