@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/style.css" />
 <style>
 a {
 	color: #0066c0;
@@ -11,38 +12,83 @@ a {
 	font-family: Arial,sans-serif;
 }
 
+.quantity {
+	max-width: 110px;
+}
+
+.subtotal {
+	float: right!important; 
+}
+
 </style>
-<div>
-	<div style="width:100%">
-		<div style="width: 10%; float: left">Image</div>
-		<div style="float: left">Title</div>
-		<div style="width: 10%; float: left">Price</div>
-		<div style="width: 10%; float: left">Quantity</div>
+<div class="container">
+	<div>
+		<h2>Shopping Cart</h2>
 	</div>
-
-	<?php foreach ($shopping_cart_list as $shopping_cart) { 
-
-		$product_description = new \product_description_en;
-		$product_description = $product_description->get($shopping_cart->product_id);
+	<div style="margin-bottom: 50px">
+		<div style="width:100%; border-bottom: 1px solid #DDD; clear: both">
+			<div style="width: 65%; overflow: visible; min-height: 1px; float: left"></div>
+			<div style="width: 15%; float: left">Price</div>
+			<div style="float: left">Quantity</div>
+			<div style="clear: both"></div>
+		</div>
 	
-	?>
-	<div style="margin: 14px 0; width:100%; clear: both; border-bottom: 1px solid #DDD; height: 100px">
-		<!--
-		<div style="margin-left: 115px; width: 65%; float: left">
-			<div style="margin-left: -115px; float: left">
-				<img src="" width="100" />
-			</div>
-			<div style="">
-				<a href="#">
-					<span class="product_title">
-					<?php echo $product_description->title; ?>
+		<?php foreach ($shopping_cart_list as $shopping_cart) { 
+			$product = new product;
+			$product = $product->get($shopping_cart->product_id);
+	
+			$product_description = new \product_description_en;
+			$product_description = $product_description->get($shopping_cart->product_id);
+		
+		?>
+		<div style="border-bottom: 1px solid #DDD;">
+			<div style="margin: 14px 0; width:100%; clear: both;">
+				<div style="width: 65%; float: left">
+					<div style="padding-left: 115px">
+						<div style="width: 115px; margin-left: -115px; float: left">
+							<a href="/product">
+								<img src="/images/II/2016/08/1/1_100.jpg" width="100" />
+							</a>
+						</div>
+						<div style="position: relative">
+							<a href="/product">
+								<span class="product_title">
+								<?php echo $product_description->title; ?>
+								</span>
+							</a>
+						</div>
+						<div style="margin-top: 60px">
+							<a href="#">
+							Delete
+							</a>
+						</div>
+					</div>
+				</div>
+				<div style="width: 15%; float: left">
+					<span class="price">
+					$<?php echo $product->price; ?>
 					</span>
-				</a>
+				</div>
+				<div style="float: left" class="quantity">
+					<input style="width: 65%" type="text" maxlength="3" value="<?php echo $shopping_cart->quantity; ?>" />
+				</div>
+				<div style="clear: both"></div>
 			</div>
+		</div>
+		<?php } ?>
+
 		<div>
-		<div style="width: 10%;">Price</div>
-		<div style="width: 10%;"><?php echo $shopping_cart->quantity; ?></div>
-		-->
+			<div class="subtotal">
+				<p style="margin-top: 6px; margin-right: 15px">
+					<span class="size-medium text-bold">
+						Subtotal (2 items):&nbsp;<span class="color-prize">$29.98</span>
+					</span>
+				<p>
+			</div>
+		</div>
+		
+		<div style="clear: both; float: right">
+			<input type="submit" value="Proceed to checkout" />
+		</div>
 	</div>
-	<?php } ?>
 </div>
