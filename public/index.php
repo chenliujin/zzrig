@@ -23,6 +23,8 @@ function zzrig_model($class)
 spl_autoload_register('zzrig_model', FALSE, FALSE);
  */
 
+define('ORDER_STATUS_PENDING', 0);
+
 require_once('/opt/php/lib/php/zzrig/model/product.php');
 require_once('/opt/php/lib/php/zzrig/model/product_description_en.php');
 require_once('/opt/php/lib/php/zzrig/model/shopping_cart.php');
