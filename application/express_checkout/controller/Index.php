@@ -15,6 +15,12 @@ class Index extends Controller
 		$customer = new \customer;
 		$customer = $customer->get($_SESSION['customer_id']);
 
+		$customer_address = new \customer_address;
+		$customer_address = $customer_address->get($customer->customer_id);
+
+		$zone = new \zone;
+		$zone = $zone->get($customer_address->zone_id);
+
 		$order = new \order;
 		$order->customer_id				= $customer->customer_id;
 		$order->customer_firstname		= $customer->customer_firstname;
@@ -22,6 +28,13 @@ class Index extends Controller
 		$order->customer_telephone		= $customer->customer_telephone;
 		$order->customer_postcode		= $customer->customer_postcode;
 		$order->customer_email_address	= $customer->customer_email_address;
+		$order->customer_company		= $customer_address->customer_company;
+		$order->customer_street_address	= $customer_address->customer_street_address;
+		$order->customer_suburb			= $customer_address->customer_suburb;
+		$order->customer_city			= $customer_address->customer_city;
+		$order->customer_postcode		= $customer_address->customer_postcode;
+		$order->customer_state			= $customer_address->customer_state ? $customer_addess->customer_state : $zone->zone_name;
+
 		$order->order_status			= ORDER_STATUS_PENDING;
 
 
